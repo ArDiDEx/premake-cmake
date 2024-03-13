@@ -333,7 +333,7 @@ function m.generate(prj)
 				pch = project.getrelative(cfg.project, path.getabsolute(pch))
 			end
 
-			_p(1, 'target_precompile_headers("%s" PUBLIC "${CMAKE_SOURCE_DIR}/%s/%s")', prj.name, prj.name, pch)
+			_p(1, 'target_precompile_headers("%s" PUBLIC <%s>)', prj.name, pch)
 		end
 
 		-- pre/post buildcommands
