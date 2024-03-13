@@ -310,28 +310,28 @@ function m.generate(prj)
 		-- copied from gmake2_cpp.lua
 		if not cfg.flags.NoPCH and cfg.pchheader then
 			local pch = cfg.pchheader
-			local found = false
+			--local found = false
 
 			-- test locally in the project folder first (this is the most likely location)
-			local testname = path.join(cfg.project.basedir, pch)
-			if os.isfile(testname) then
-				pch = project.getrelative(cfg.project, testname)
-				found = true
-			else
-				-- else scan in all include dirs.
-				for _, incdir in ipairs(cfg.includedirs) do
-					testname = path.join(incdir, pch)
-					if os.isfile(testname) then
-						pch = project.getrelative(cfg.project, testname)
-						found = true
-						break
-					end
-				end
-			end
+			--local testname = path.join(cfg.project.basedir, pch)
+			--if os.isfile(testname) then
+			--	pch = project.getrelative(cfg.project, testname)
+			--	found = true
+			--else
+			--	-- else scan in all include dirs.
+			--	for _, incdir in ipairs(cfg.includedirs) do
+			--		testname = path.join(incdir, pch)
+			--		if os.isfile(testname) then
+			--			pch = project.getrelative(cfg.project, testname)
+			--			found = true
+			--			break
+			--		end
+			--	end
+			--end
 
-			if not found then
-				pch = project.getrelative(cfg.project, path.getabsolute(pch))
-			end
+			--if not found then
+			--  pch = project.getrelative(cfg.project, path.getabsolute(pch))
+			--	end
 
 			_p(1, 'target_precompile_headers("%s" PUBLIC <%s>)', prj.name, pch)
 		end
